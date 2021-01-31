@@ -47,7 +47,7 @@ const infoMiddle = (
         All my life I haven't been that good at sports, I've tried voleybol, golf, badminthon, archery, dancing ... but
         I wasn't good at all.
         <br/>
-        I've always preferred to go for a walk in nature or near the river and then stop listening to music or reading a
+        I've always preferred to go for a walk in nature or near the river and then stop listing music music or reading a
         book.
         <br/>
         Today I still love doing these things. I love reading and listing music or podcasts. But I no longer dream of

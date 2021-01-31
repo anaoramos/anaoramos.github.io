@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import {AboutMe} from "./aboutMe/AboutMe";
 import {ProfessionalInfo} from "./ProfessionalInfo";
 import {PortfolioInfo} from "./PortfolioInfo";
+import {StepButton} from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -66,45 +67,37 @@ export const StepperMenu = () => {
 
     return (
         <div className={classes.root}>
-            <Stepper activeStep={activeStep} orientation="vertical">
+            <Stepper nonLinear activeStep={activeStep} orientation="vertical">
                 {steps.map((label, index) => (
                     <Step key={label}>
-                        <StepLabel>{label}</StepLabel>
-                        <StepContent>
-                            <Typography>{getStepContent(index)}</Typography>
-                            <div className={classes.actionsContainer}>
-                                <div>
-                                    <Button
-                                        disabled={activeStep === 0}
-                                        onClick={handleBack}
-                                        className={classes.button}
-                                    >
-                                        Back
-                                    </Button>
-                                    < Button
-                                        disabled={activeStep === steps.length - 1}
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={handleNext}
-                                        style={{backgroundColor: "lightslategrey"}}
-                                        className={classes.button}
-                                    >
-                                        Next
-                                    </Button>
-                                </div>
+                        <StepButton onClick={() => setActiveStep(index)}> {label}</StepButton>
+                        ‘ <StepContent>
+                        <Typography>{getStepContent(index)}</Typography>
+                        <div className={classes.actionsContainer}>
+                            <div>
+                                <Button
+                                    disabled={activeStep === 0}
+                                    onClick={handleBack}
+                                    className={classes.button}
+                                >
+                                    Back
+                                </Button>
+                                < Button
+                                    disabled={activeStep === steps.length - 1}
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleNext}
+                                    style={{backgroundColor: "lightslategrey"}}
+                                    className={classes.button}
+                                >
+                                    Next
+                                </Button>
                             </div>
-                        </StepContent>
+                        </div>
+                    </StepContent>
                     </Step>
                 ))}
             </Stepper>
-            {activeStep === steps.length && (
-                <Paper square elevation={0} className={classes.resetContainer}>
-                    <Typography>All steps completed - you&apos;re finished</Typography>
-                    <Button onClick={handleReset} className={classes.button}>
-                        Reset
-                    </Button>
-                </Paper>
-            )}
         </div>
     );
 }
