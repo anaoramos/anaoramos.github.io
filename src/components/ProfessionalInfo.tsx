@@ -7,7 +7,8 @@ import TimelineDot from "@material-ui/lab/TimelineDot";
 import TimelineConnector from "@material-ui/lab/TimelineConnector";
 import TimelineContent from "@material-ui/lab/TimelineContent";
 import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
-
+// @ts-ignore
+import MyCV from '../documents/cv.pdf';
 
 export const ProfessionalInfo = () => {
     return (
@@ -32,13 +33,14 @@ export const ProfessionalInfo = () => {
                             analyze speech, processing millions of customer files to help companies, e.g. contact
                             centers, to help unlock valuable data from voice interactions.
                             <br/>
-                            I work with a team spread between Portugal and Switzerland, so we plan, track and manage
-                            our agile and software development projects with <b>Jira</b>, <b>Zeplin</b>, <b>Slack</b>...
+                            I do a variety of tasks like writing internal/user documentation, code, or even support.
                             <br/>
-                            As expected from a startup company, I do a variety of tasks such as: writing internal/user
-                            documentation, code or even support. I work on the development of front-end components
-                            (<b>Typescript</b>, <b>Javascript</b>, <b>ReactJS</b>) on the server side (<b>Python</b> and
-                            <b>Kotlin</b>), develop <b>AWS Lambda functions</b> and I am also familiar with <b>Git</b>.
+                            As  a  full  stack  developer  I’m  involved  in  both  frontend  and  backend  tasks.
+                            In  the  frontend  side, I  develop  frontend  components  using <b>ReactJS</b>,  mostly <b>Typescript</b>.
+                            On  the  backend  side,  I  use <b>Kotlin</b> for editing or adding services for our existing API’s and creating new ones as requested.
+                            <br/>
+                            My engineering team is spread between Portugal and Switzerland, so we plan, track and manage our agile and software development projects with Jira, Zeplin, Slack.
+                            We also use <b>Git</b> as version control system.
                         </Typography>
                     </TimelineContent>
                 </TimelineItem>
@@ -58,18 +60,16 @@ export const ProfessionalInfo = () => {
                         </Typography>
                         <Typography style={{fontSize: "small"}}>
                             Nonius provides hospitality technology fully integrated with hotel's management systems.
-                            I started a project in which I was responsible for the <b>design of the architecture and the
-                            development of a chatbot</b> to improve the call center services of Nonius support.
+
+                            I started a project in which I was responsible for the design of the architecture and the development
+                            of a chatbot to be used by the Nonius support team as well to be integrated in the Nonius Website(performing Human Handoff).
                             <br/>
-                            My work started by analyzing the chatbot frameworks(cost-effective benefits, required
-                            architecture, time of development, ...) and determining the respective pros and cons.
+                            My work started by analyzing the chatbot frameworks(cost-effective benefits, required architecture,time of development, ...)
+                            and determining the respective pros and cons. In addition, I also developed different  demos,
+                            using <b>Wit.ai</b> (with <b>Python</b> on  the  server  side  in  combination  with  the <b>Django web framework</b> for  the  frontend)  and  using DialogFlow (with <b>Node.js</b>),
+                            which was originally integrated with Google Assistant.
                             <br/>
-                            In addition, I developed a chatbot demo with <b>Wit.ai</b> (using <b>Pyhton & Django web
-                            framework</b> and with <b>DialogFlow</b> (with <b>Node.js</b>), which was originally
-                            integrated as a Google Assistant. The accepted chatbot framework was the <b>DialogFlow</b>.
-                            <br/>
-                            During application development, Node.js was used for the server side, and the front end was
-                            provided by the integration in Tiledesk.
+                            In the end, I worked with DialogFlow framework, using Node.js for the server side.  The frontend was provided by the integration with Tiledesk.
                         </Typography>
                     </TimelineContent>
                 </TimelineItem>
@@ -103,6 +103,9 @@ export const ProfessionalInfo = () => {
                     </TimelineContent>
                 </TimelineItem>
             </Timeline>
+            <Typography style={{fontSize: "small"}}>
+                You can find more information in <a href={MyCV} download={'ana_ramos_cv.pdf'}>my CV</a>.
+            </Typography>
         </React.Fragment>
     );
 }

@@ -1,16 +1,16 @@
 import React from 'react';
+import clsx from 'clsx';
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import {AboutMe} from "./aboutMe/AboutMe";
 import {ProfessionalInfo} from "./ProfessionalInfo";
 import {PortfolioInfo} from "./PortfolioInfo";
 import {StepButton} from "@material-ui/core";
+import {EducationInfo} from "./EducationInfo";
+import {StepIconProps} from '@material-ui/core/StepIcon';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -28,17 +28,24 @@ const useStyles = makeStyles((theme: Theme) =>
         resetContainer: {
             padding: theme.spacing(3),
         },
+        customLabelStyle: {
+            fontFamily: 'monospace',
+        },
+        customLabelStyle_: {
+            fontFamily: 'monospace',
+            color: 'red'
+        }
     }),
 );
 
 function getSteps() {
-    return ['About Me', 'Professional Experience', 'Portfolio'];
+    return ['Education & Certifications', 'Professional Experience', 'Portfolio'];
 }
 
 function getStepContent(step: number) {
     switch (step) {
         case 0:
-            return <AboutMe/>;
+            return <EducationInfo/>;
         case 1:
             return <ProfessionalInfo/>;
         case 2:
@@ -48,21 +55,50 @@ function getStepContent(step: number) {
     }
 }
 
+const useQontoStepIconStyles = makeStyles({
+    root: {
+        color: '#eaeaf0',
+        display: 'flex',
+        height: 22,
+        alignItems: 'center',
+    },
+    active: {
+        color: 'lightslategrey'
+    },
+    circle: {
+        width: 10,
+        height: 10,
+        borderRadius: '50%',
+        backgroundColor: 'currentColor',
+    },
+});
+
+function QontoStepIcon(props: StepIconProps) {
+    const classes = useQontoStepIconStyles();
+    const {active} = props;
+
+    return (
+        <div
+            className={clsx(classes.root, {
+                [classes.active]: active,
+            })}
+        >
+            <div className={classes.circle}/>
+        </div>
+    );
+}
+
 export const StepperMenu = () => {
     const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
+    const [activeStep, setActiveStep] = React.useState(-1);
     const steps = getSteps();
 
-    const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
-
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
+    const handleOnClick = (step: number) => {
+        if (activeStep !== -1 && step === activeStep) {
+            setActiveStep(-1)
+        } else {
+            setActiveStep(step)
+        }
     };
 
     return (
@@ -70,31 +106,13 @@ export const StepperMenu = () => {
             <Stepper nonLinear activeStep={activeStep} orientation="vertical">
                 {steps.map((label, index) => (
                     <Step key={label}>
-                        <StepButton onClick={() => setActiveStep(index)}> {label}</StepButton>
-                        ‘ <StepContent>
-                        <Typography>{getStepContent(index)}</Typography>
-                        <div className={classes.actionsContainer}>
-                            <div>
-                                <Button
-                                    disabled={activeStep === 0}
-                                    onClick={handleBack}
-                                    className={classes.button}
-                                >
-                                    Back
-                                </Button>
-                                < Button
-                                    disabled={activeStep === steps.length - 1}
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={handleNext}
-                                    style={{backgroundColor: "lightslategrey"}}
-                                    className={classes.button}
-                                >
-                                    Next
-                                </Button>
-                            </div>
-                        </div>
-                    </StepContent>
+                        <StepButton onClick={() => handleOnClick(index)}>
+                            <StepLabel StepIconComponent={QontoStepIcon}
+                                       classes={{label: classes.customLabelStyle}}>{label}</StepLabel>
+                        </StepButton>
+                        <StepContent>
+                            <Typography>{getStepContent(index)}</Typography>
+                        </StepContent>
                     </Step>
                 ))}
             </Stepper>

@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core'
 import profilePhoto from '../assets/profile.png'
 import {ContactItems} from "./ContactItems";
+import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 
 const usestyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -70,7 +71,7 @@ export const NavigationBar = () => {
     return (
         <AppBar position="static" style={{backgroundColor: "lightslategrey"}}>
             <Toolbar>
-                <Typography>Ana Ramos</Typography>
+                <Typography variant="h4" style={{fontFamily:"monospace"}}>Ana Ramos</Typography>
                 <div className={classes.grow}/>
                 <div className={classes.icon}>
                     <IconButton
@@ -79,7 +80,8 @@ export const NavigationBar = () => {
                         aria-controls={'primary-search-account-menu'}
                         aria-haspopup="true"
                         onClick={handleProfileMenuOpen}
-                        color="inherit"> <Avatar alt={"Ana Ramos"}/>
+                        color="inherit">
+                        <PersonOutlineIcon fontSize={"large"}/>
                     </IconButton>
                 </div>
             </Toolbar>

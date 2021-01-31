@@ -7,6 +7,8 @@ import TimelineDot from "@material-ui/lab/TimelineDot";
 import TimelineConnector from "@material-ui/lab/TimelineConnector";
 import TimelineContent from "@material-ui/lab/TimelineContent";
 import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
+// @ts-ignore
+import MyCV from '../documents/cv.pdf';
 
 export const EducationInfo = () => {
     return (
@@ -54,9 +56,7 @@ export const EducationInfo = () => {
                         <Typography style={{fontSize: "small"}}>
                             At the end of the academic year, I finished my dissertation from which I was able to publish
                             a <a href={'https://lnkd.in/dSytZF8'}>paper</a> and finished my integrated master's degree
-                            in
-                            biomedical engineering with a classification
-                            of 16/20.
+                            in biomedical engineering with a classification of 16/20.
                         </Typography>
                     </TimelineContent>
                 </TimelineItem>
@@ -85,8 +85,7 @@ export const EducationInfo = () => {
                         <TimelineConnector/>
                     </TimelineSeparator>
                     <TimelineContent style={{fontSize: "small"}}>
-                        <Typography style={{fontSize: "small"}}>English B1 Course – BabeliUM Centro de
-                            Línguas</Typography>
+                        <Typography style={{fontSize: "small"}}>English B1 Course – BabeliUM Centro de Línguas</Typography>
                     </TimelineContent>
                 </TimelineItem>
                 <TimelineItem>
@@ -129,17 +128,14 @@ export const EducationInfo = () => {
                     <TimelineContent>
                         <Typography style={{fontSize: "small"}}>
                             Back in September 2014 when I was 18 years old, I finished high school with a classification
-                            of
-                            18/20 and went to the <b>University of Minho</b> to begin an integrated master's degree
-                            in <b>Biomedical
-                            Engineering</b>. </Typography>
+                            of 18/20 and went to the <b>University of Minho</b> to begin an integrated master's degree
+                            in <b>Biomedical Engineering</b>. </Typography>
                     </TimelineContent>
                 </TimelineItem>
             </Timeline>
             <Typography style={{fontSize: "small"}}>
-                You can find more information about my studies in my CV. And don't hesitate to ask me
-                something
-                directly.
+                You can find more information about my studies in <a href={MyCV} download={'ana_ramos_cv.pdf'}>my CV</a>.
+                And don't hesitate to ask me something directly.
             </Typography>
         </React.Fragment>
     );
