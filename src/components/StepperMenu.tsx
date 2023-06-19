@@ -8,7 +8,7 @@ import StepContent from "@material-ui/core/StepContent";
 import Typography from "@material-ui/core/Typography";
 import { PortfolioInfo } from "./PortfolioInfo";
 import { StepButton } from "@material-ui/core";
-import { EducationInfo } from "./EducationInfo";
+import EducationInfo from "./EducationInfo";
 import { StepIconProps } from "@material-ui/core/StepIcon";
 import ProfessionalInfo from "./ProfessionalInfo";
 
@@ -39,7 +39,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function getSteps() {
-  return ["Professional Experience", "Education & Certifications", "Portfolio"];
+  return [
+    "Professional Experience",
+    "Education",
+    "Portfolio",
+    "Certifications",
+  ];
 }
 
 function getStepContent(step: number) {
@@ -51,7 +56,7 @@ function getStepContent(step: number) {
     case 2:
       return <PortfolioInfo />;
     default:
-      return "Unknown step";
+      return "WIP...";
   }
 }
 
