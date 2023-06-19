@@ -39,15 +39,15 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function getSteps() {
-  return ["Education & Certifications", "Professional Experience", "Portfolio"];
+  return ["Professional Experience", "Education & Certifications", "Portfolio"];
 }
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <EducationInfo />;
-    case 1:
       return <ProfessionalInfo />;
+    case 1:
+      return <EducationInfo />;
     case 2:
       return <PortfolioInfo />;
     default:
