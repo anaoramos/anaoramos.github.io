@@ -1,48 +1,61 @@
-import React from 'react'
-import {
-    createStyles,
-    Grid,
-    makeStyles,
-    Theme,
-    IconButton
-} from '@material-ui/core'
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import EmailIcon from '@material-ui/icons/Email';
+import React from "react";
+import { createStyles, makeStyles, Theme, IconButton } from "@material-ui/core";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import EmailIcon from "@material-ui/icons/Email";
 
-const usestyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            flexGrow: 1,
-            width: 'auto',
-        },
-        paper: {
-            padding: theme.spacing(1),
-            textAlign: 'center',
-            color: theme.palette.text.secondary,
-        },
-        appbar: {
-            alignItems: 'center',
-        }
-    }))
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+      padding: theme.spacing(1),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+  })
+);
 
-export const ContactItems = () => {
-    const classes = usestyles();
-
-    return (
-        <div className={classes.root}>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <div className={classes.paper}>
-                        <IconButton target="_blank" href={'https://www.linkedin.com/in/anaforamos'}
-                                    size={"small"}><LinkedInIcon/></IconButton>
-                        <IconButton target="_blank" href={'https://www.github.com/anaoramos'}
-                                    size={"small"}><GitHubIcon/></IconButton>
-                        <IconButton target="_top" href={'mailto:anaforamos@gmail.com'}
-                                    size={"small"}><EmailIcon/></IconButton>
-                    </div>
-                </Grid>
-            </Grid>
-        </div>
-    )
+interface SocialIconButtonProps {
+  icon: React.ElementType;
+  link: string;
+  size: "medium" | "small" | undefined;
 }
+
+const SocialIconButton: React.FC<SocialIconButtonProps> = ({
+  icon: Icon,
+  link,
+  size,
+}) => (
+  <IconButton target="_blank" href={link} size={size}>
+    <Icon />
+  </IconButton>
+);
+
+export const ContactItems: React.FC = () => {
+  const classes = useStyles();
+
+  const socialMediaLinks = {
+    linkedin: "https://www.linkedin.com/in/anaforamos",
+    github: "https://www.github.com/anaoramos",
+    email: "mailto:anaforamos@gmail.com",
+  };
+
+  return (
+    <div className={classes.paper}>
+      <SocialIconButton
+        icon={LinkedInIcon}
+        link={socialMediaLinks.linkedin}
+        size="small"
+      />
+      <SocialIconButton
+        icon={GitHubIcon}
+        link={socialMediaLinks.github}
+        size="small"
+      />
+      <SocialIconButton
+        icon={EmailIcon}
+        link={socialMediaLinks.email}
+        size="small"
+      />
+    </div>
+  );
+};
